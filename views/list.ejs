@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Todo List</title>
+
+</head>
+
+<body>
+    <div class="box">
+        <h1>Todo List</h1>
+    </div>
+    <div class="box">
+
+        <% for(var i=0; i<ejes.length; i++ ) { %>
+            <div class="todo-item">
+                <input class="checkbox" type="checkbox">
+                <p
+                    class="<%= ejes[i].priority === 'High' ? 'high-priority' : ejes[i].priority === 'Medium' ? 'medium-priority' : 'low-priority' %>">
+                    <%= ejes[i].task %>
+                </p>
+                <form action="/edit" method="post" style="display:inline;">
+                    <input type="hidden" name="index" value="<%= i %>">
+                    <input type="text" name="newTask" placeholder="Edit task">
+                    <button type="submit">Edit</button>
+                </form>
+                <form action="/delete" method="post" style="display:inline;">
+                    <input type="hidden" name="index" value="<%= i %>">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+            <% } %>
+
+                <form action="/" method="post" onsubmit="return validateForm()">
+                    <input type="text" id="inputField" name="ele1" placeholder="Enter the task">
+                    <select name="priority">
+                        <option value="High">🔴High</option>
+                        <option value="Medium">🟠Medium</option>
+                        <option value="Low">🟢Low</option>
+                    </select>
+                    <button type="submit">+</button>
+                </form>
+
+    </div>
+
+
+    </div>
+    <script>
+        function validateForm() {
+            const input = document.getElementById("inputField").value.trim();
+            if (!input) {
+                alert('Input cannot be empty!');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
