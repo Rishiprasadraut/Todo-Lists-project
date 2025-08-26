@@ -15,24 +15,26 @@
     </div>
     <div class="box">
 
-        <% for(var i=0; i<ejes.length; i++ ) { %>
-            <div class="todo-item">
-                <input class="checkbox" type="checkbox">
-                <p
-                    class="<%= ejes[i].priority === 'High' ? 'high-priority' : ejes[i].priority === 'Medium' ? 'medium-priority' : 'low-priority' %>">
-                    <%= ejes[i].task %>
-                </p>
-                <form action="/edit" method="post" style="display:inline;">
-                    <input type="hidden" name="index" value="<%= i %>">
-                    <input type="text" name="newTask" placeholder="Edit task">
-                    <button type="submit">Edit</button>
-                </form>
-                <form action="/delete" method="post" style="display:inline;">
-                    <input type="hidden" name="index" value="<%= i %>">
-                    <button type="submit">Delete</button>
-                </form>
-            </div>
-            <% } %>
+       <% for(var i=0; i<ejes.length; i++ ) { %>
+    <div class="todo-item">
+        <input class="checkbox" type="checkbox">
+        <p class="<%= ejes[i].priority === 'High' ? 'high-priority' : ejes[i].priority === 'Medium' ? 'medium-priority' : 'low-priority' %>">
+            <%= ejes[i].task %>
+        </p>
+
+        <!-- EDIT (PUT) -->
+        <form action="/edit/<%= i %>?_method=PUT" method="post" style="display:inline;">
+            <input type="text" name="newTask" placeholder="Edit task">
+            <button id="editButton" type="submit">Edit</button>
+        </form>
+
+        <!-- DELETE (DELETE) -->
+        <form action="/delete/<%= i %>?_method=DELETE" method="post" style="display:inline;">
+            <button id="deleteButton" type="submit">Delete</button>
+        </form>
+    </div>
+<% } %>
+
 
                 <form action="/" method="post" onsubmit="return validateForm()">
                     <input type="text" id="inputField" name="ele1" placeholder="Enter the task">
@@ -41,7 +43,7 @@
                         <option value="Medium">🟠Medium</option>
                         <option value="Low">🟢Low</option>
                     </select>
-                    <button type="submit">+</button>
+                    <button id="addButton" type="submit">ADD</button>
                 </form>
 
     </div>

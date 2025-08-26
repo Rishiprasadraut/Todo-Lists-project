@@ -80,12 +80,12 @@ button:hover {
 }
 
 /* Delete Button (Same Style but Red) */
-form[action="/delete"] button {
+#deleteButton{
   background: #ff4d4d;
   margin-left: 1px;
 }
 
-form[action="/delete"] button:hover {
+#deleteButton:hover {
   background: #e60000;
 }
 
@@ -126,6 +126,7 @@ form select:focus {
 .low-priority {
   color: green;
 }
+
 
 /* Responsive Design */
 @media (max-width: 600px) {

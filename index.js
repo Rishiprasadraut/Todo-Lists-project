@@ -1,21 +1,22 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method')); // Allows PUT & DELETE through forms
 
 var items = [];
+
+// GET - Display list
 app.get("/", function (req, res) {
-    res.render("list", { ejes: items })
+    res.render("list", { ejes: items });
 });
 
-
-
+// POST - Add new task
 app.post("/", function (req, res) {
-
     const item = {
         task: req.body.ele1,
         priority: req.body.priority || "Medium"
@@ -25,20 +26,22 @@ app.post("/", function (req, res) {
     }
     items.push(item);
     res.redirect("/");
-
 });
 
-app.post("/edit", function (req, res) {
-    const index = req.body.index;
+// **PUT - Edit Task**
+app.put("/edit/:index", function (req, res) {
+    const index = req.params.index;
     const newTask = req.body.newTask;
+
     if (index !== undefined && newTask.trim() !== "") {
         items[index].task = newTask;
     }
     res.redirect("/");
 });
 
-app.post("/delete", function (req, res) {
-    const index = req.body.index;
+// **DELETE - Delete Task**
+app.delete("/delete/:index", function (req, res) {
+    const index = req.params.index;
     if (index !== undefined) {
         items.splice(index, 1);
     }
@@ -46,6 +49,5 @@ app.post("/delete", function (req, res) {
 });
 
 app.listen(8000, function () {
-    console.log("server Started...")
+    console.log("Server Started on port 8000...");
 });
-
