@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 // ✅ Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/todoDB", {
+mongoose.connect("mongodb+srv://rishiprasadraut595_db_user:3UG9jLN7tVbSMXbX@todo.mslooqa.mongodb.net/?retryWrites=true&w=majority&appName=todo", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
