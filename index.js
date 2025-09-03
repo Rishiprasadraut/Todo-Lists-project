@@ -8,10 +8,10 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
-// ✅ Connect to MongoDB
+//  Connect to MongoDB
 mongoose.connect("mongodb+srv://rishiprasadraut595_db_user:3UG9jLN7tVbSMXbX@todo.mslooqa.mongodb.net/?retryWrites=true&w=majority&appName=todo")
-.then(() => console.log("✅ MongoDB Connected..."))
-.catch(err => console.error("❌ MongoDB Error:", err));
+.then(() => console.log("MongoDB Connected..."))
+.catch(err => console.error("MongoDB Error:", err));
 
 
 // Task Schema
