@@ -37,6 +37,10 @@ This project is built with the following technologies:
   - Express.js
   - Data Store in Array[]
 
+- **DataBase**:
+  - MongoDB
+
+    
 ## 🎯 Goals
 
 - **User-Friendly**: Simple, clean, and easy-to-use interface.

@@ -18,6 +18,11 @@ app.use(methodOverride('_method'));
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://rishiprasadraut595_db_user:3UG9jLN7tVbSMXbX@todo.mslooqa.mongodb.net/?retryWrites=true&w=majority&appName=todo")
 .then(() => console.log(" MongoDB Connected..."))
+
+//  Connect to MongoDB
+mongoose.connect("mongodb+srv://rishiprasadraut595_db_user:3UG9jLN7tVbSMXbX@todo.mslooqa.mongodb.net/?retryWrites=true&w=majority&appName=todo")
+.then(() => console.log("MongoDB Connected..."))
+
 .catch(err => console.error("MongoDB Error:", err));
 
 
