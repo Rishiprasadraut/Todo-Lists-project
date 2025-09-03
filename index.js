@@ -3,15 +3,22 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
 const app = express();
+
+
 app.set('view engine', 'ejs');
+
+
+// Middlware
 app.use(express.static('public'));
+
 app.use(express.urlencoded({ extended: true }));
+
 app.use(methodOverride('_method'));
 
-// ✅ Connect to MongoDB
+// Connect to MongoDB
 mongoose.connect("mongodb+srv://rishiprasadraut595_db_user:3UG9jLN7tVbSMXbX@todo.mslooqa.mongodb.net/?retryWrites=true&w=majority&appName=todo")
-.then(() => console.log("✅ MongoDB Connected..."))
-.catch(err => console.error("❌ MongoDB Error:", err));
+.then(() => console.log(" MongoDB Connected..."))
+.catch(err => console.error("MongoDB Error:", err));
 
 
 // Task Schema
@@ -23,18 +30,19 @@ const taskSchema = new mongoose.Schema({
     },
     priority: {
         type: String,
-        enum: ["High", "Medium", "Low"],
+        pri: ["High", "Medium", "Low"],
         default: "Medium"
     }
 });
+
+
 
 // Model
 const Task = mongoose.model("Task", taskSchema);
 
 
 
-
-// GET - Display list
+// Display list
 app.get("/", async (req, res) => {
     try {
         const tasks = await Task.find();
@@ -44,7 +52,7 @@ app.get("/", async (req, res) => {
     }
 });
 
-// POST - Add new task
+// Add new task
 app.post("/", async (req, res) => {
     try {
         const newTask = new Task({
@@ -60,7 +68,7 @@ app.post("/", async (req, res) => {
 });
 
 
-// **PUT - Edit Task**
+// Edit Task
 app.put("/edit/:id", async (req, res) => {
     try {
         await Task.findByIdAndUpdate(req.params.id, { task: req.body.newTask });
@@ -71,7 +79,7 @@ app.put("/edit/:id", async (req, res) => {
 });
 
 
-// **DELETE - Delete Task**
+// Delete Task
 app.delete("/delete/:id", async (req, res) => {
     try {
         await Task.findByIdAndDelete(req.params.id);

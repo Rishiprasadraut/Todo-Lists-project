@@ -22,13 +22,13 @@
         <%= task.task %>
     </p>
 
-    <!-- EDIT (PUT) -->
+    <!--EDIT -->
     <form action="/edit/<%= task._id %>?_method=PUT" method="post" style="display:inline;">
         <input type="text" name="newTask" placeholder="Edit task">
         <button id="editButton" type="submit">Edit</button>
     </form>
 
-    <!-- DELETE (DELETE) -->
+    <!-- DELETE -->
     <form action="/delete/<%= task._id %>?_method=DELETE" method="post" style="display:inline;">
         <button id="deleteButton" type="submit">Delete</button>
     </form>
