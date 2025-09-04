@@ -20,13 +20,13 @@
             <div class="todo-item">
                 <input class="checkbox" type="checkbox">
                 <p
-                    class="<%= task.priority === 'High'?'high-priority':task.priority === 'Medium'?'medium-priority':'low-priority' %>">
+                    class="<%= task.priority === 'High' ? 'high-priority' : task.priority === 'Medium' ? 'medium-priority' : 'low-priority' %>">
                    
                     <%= task.task %>
                 </p>
 
                 <!--EDIT -->
-                <form action="/edit/<%= task._id %> ?_method = PUT" method="post" style="display:inline;">
+                <form action="/edit/<%= task._id %>?_method=PUT" method="post" style="display:inline;">
 
                     <input type="text" id="editField" name="newTask" placeholder="Edit task">
                     
@@ -35,7 +35,7 @@
                 </form>
 
                 <!-- DELETE -->
-                <form action="/delete/<%= task._id %>?_method = DELETE" method="post" style="display:inline;">
+                <form action="/delete/<%= task._id %>?_method=DELETE" method="post" style="display:inline;">
                 
                     <button id="deleteButton" type="submit">Delete</button>
                 
