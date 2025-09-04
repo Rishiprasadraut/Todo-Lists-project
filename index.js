@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+const port = 8000;
 
 app.set('view engine', 'ejs');
 
@@ -15,15 +16,25 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(methodOverride('_method'));
 
-// Connect to MongoDB
-mongoose.connect("mongodb+srv://rishiprasadraut595_db_user:3UG9jLN7tVbSMXbX@todo.mslooqa.mongodb.net/?retryWrites=true&w=majority&appName=todo")
-    .then(() => console.log(" MongoDB Connected..."))
 
-//  Connect to MongoDB
-mongoose.connect("mongodb+srv://rishiprasadraut595_db_user:3UG9jLN7tVbSMXbX@todo.mslooqa.mongodb.net/?retryWrites=true&w=majority&appName=todo")
-    .then(() => console.log("MongoDB Connected..."))
+//  Connect to MongoDB using atlas
 
-    .catch(err => console.error("MongoDB Error:", err));
+mongoose.connect("mongodb+srv://rishiprasadraut595_db_user:3UG9jLN7tVbSMXbX@todo.mslooqa.mongodb.net/?retryWrites=true&w=majority&appName=todo")
+.then(() => console.log("MongoDB Connected..."))
+
+.catch(err => console.error("MongoDB Error:", err));
+
+
+
+//When you use localiy then uncommant this 
+
+// mongoose.connect("mongodb://127.0.0.1:27017/todo")
+//     .then(() => console.log("MongoDB Connected..."))
+
+//     .catch(err => console.error("MongoDB Error:", err));
+
+
+
 
 
 // Task Schema
@@ -35,7 +46,7 @@ const taskSchema = new mongoose.Schema({
     },
     priority: {
         type: String,
-        pri: ["High", "Medium", "Low"],
+        pr: ["High", "Medium", "Low"],
         default: "Medium"
     }
 });
@@ -68,7 +79,7 @@ app.post("/", async (req, res) => {
         await newTask.save();
         res.redirect("/");
     } catch (err) {
-        res.status(400).send("Input cannot be empty!");
+        res.status(400).send("Input cannot be empty..");
     }
 });
 
@@ -95,6 +106,6 @@ app.delete("/delete/:id", async (req, res) => {
 });
 
 
-app.listen(8000, function () {
+app.listen(port, function () {
     console.log("Server Started on port 8000...");
 });

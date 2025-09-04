@@ -13,48 +13,70 @@
     <div class="box">
         <h1>Todo List</h1>
     </div>
-    <div class="box">
+    <div class="box2">
 
-       <% ejes.forEach(task => { %>
-<div class="todo-item">
-    <input class="checkbox" type="checkbox">
-    <p class="<%= task.priority === 'High' ? 'high-priority' : task.priority === 'Medium' ? 'medium-priority' : 'low-priority' %>">
-        <%= task.task %>
-    </p>
+        <% ejes.forEach(task=> { %>
 
-    <!--EDIT -->
-    <form action="/edit/<%= task._id %>?_method=PUT" method="post" style="display:inline;">
-        <input type="text" name="newTask" placeholder="Edit task">
-        <button id="editButton" type="submit">Edit</button>
-    </form>
+            <div class="todo-item">
+                <input class="checkbox" type="checkbox">
+                <p
+                    class="<%= task.priority === 'High'?'high-priority':task.priority === 'Medium'?'medium-priority':'low-priority' %>">
+                   
+                    <%= task.task %>
+                </p>
 
-    <!-- DELETE -->
-    <form action="/delete/<%= task._id %>?_method=DELETE" method="post" style="display:inline;">
-        <button id="deleteButton" type="submit">Delete</button>
-    </form>
-</div>
-<% }) %>
+                <!--EDIT -->
+                <form action="/edit/<%= task._id %> ?_method = PUT" method="post" style="display:inline;">
 
-
-                <form action="/" method="post" onsubmit="return validateForm()">
-                    <input type="text" id="inputField" name="ele1" placeholder="Enter the task">
-                    <select name="priority">
-                        <option value="High">🔴High</option>
-                        <option value="Medium">🟠Medium</option>
-                        <option value="Low">🟢Low</option>
-                    </select>
-                    <button id="addButton" type="submit">ADD</button>
+                    <input type="text" id="editField" name="newTask" placeholder="Edit task">
+                    
+                    <button id="editButton" type="submit">Edit</button>
+                
                 </form>
 
+                <!-- DELETE -->
+                <form action="/delete/<%= task._id %>?_method = DELETE" method="post" style="display:inline;">
+                
+                    <button id="deleteButton" type="submit">Delete</button>
+                
+                </form>
+            
+            </div>
+            
+            <% }) %>
+            
+            <div class="todo-item">
+
+
+                    <form action="/" method="post" onsubmit="return validateForm()">
+            
+                        <input type="text" id="inputField" name="ele1" placeholder="Enter the task">
+            
+                        <select name="priority">
+            
+                            <option value="High">🔴High</option>
+            
+                            <option value="Medium">🟠Medium</option>
+            
+                            <option value="Low">🟢Low</option>
+            
+                        </select>
+            
+                        <button id="addButton" type="submit">ADD</button>
+            
+                    </form>
+
+                </div>
+
     </div>
 
 
-    </div>
+
     <script>
         function validateForm() {
             const input = document.getElementById("inputField").value.trim();
             if (!input) {
-                alert('Input cannot be empty!');
+                alert('Input cannot be empty..');
                 return false;
             }
             return true;

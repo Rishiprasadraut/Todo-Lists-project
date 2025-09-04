@@ -1,118 +1,92 @@
-/* Reset & Base Styling */
 * {
-  margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  min-height: 100vh;
+  background-color: rgba(255, 179, 79, 0.637);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
 }
 
-/* Header Title */
 .box h1 {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
   text-align: center;
-  font-size: 2.5rem;
-  color: black;
-  margin-bottom: 20px;
-  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Container Box */
-.box {
-  background: white;
+  font-size: 2rem;
+  margin: 5px;
   width: 100%;
   max-width: 700px;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Todo Item Styling */
+.box2 {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 700px;
+}
+
 .todo-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: #f8f9fa;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  justify-content: space-evenly;
+  margin: 7px;
 }
 
-/* Checkbox Alignment */
-.todo-item input[type="checkbox"] {
-  transform: scale(1.3);
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-/* Text inside Todo */
-.todo-item .checkbox p {
-  flex: 2;
-  margin-right: 10px;
+.todo-item input {
+  padding: 3px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
   font-size: 1rem;
-  color: #333;
-  word-break: break-word;
 }
 
-/* General Button Style */
-button {
-  background: #667eea;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
+.todo-item input[type="checkbox"] {
   cursor: pointer;
+  transform: scale(1);
+}
+
+button {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
   transition: background 0.3s ease;
 }
 
-button:hover {
-  background: #5563c1;
+#editButton {
+  background-color: rgba(62, 62, 249, 0.804);
 }
 
-/* Delete Button (Same Style but Red) */
-#deleteButton{
-  background: #ff4d4d;
-  margin-left: 1px;
+#editButton:hover {
+  background-color: rgba(4, 4, 252, 0.804);
+}
+
+#deleteButton {
+  background-color: rgba(255, 47, 47, 0.832);
 }
 
 #deleteButton:hover {
-  background: #e60000;
+  background-color: rgba(253, 12, 12, 0.832);
 }
 
-/* Add Task Input & Select */
-form input[type="text"],
-form select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-right: 5px;
-  font-size: 1rem;
-  outline: none;
+#addButton {
+  background-color: rgba(15, 190, 15, 0.766);
 }
 
-form select {
-  cursor: pointer;
+#addButton:hover {
+  background-color: rgba(15, 190, 15, 0.927);
 }
 
-form input[type="text"]:focus,
-form select:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
-}
-
-.todo-item input[type="checkbox"]:checked + p {
-  text-decoration: line-through 2px solid;
-  text-decoration-color: #a683e3;
+#editField {
+  width: 100px;
 }
 
 .high-priority {
@@ -127,30 +101,40 @@ form select:focus {
   color: green;
 }
 
+select {
+  padding: 3px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+}
 
-/* Responsive Design */
+select option {
+  padding: 3px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+}
+
+.todo-item input[type="checkbox"]:checked + p {
+  text-decoration: line-through 2px solid;
+  color: gray;
+}
+
+/*Media Queries */
+
 @media (max-width: 600px) {
   .box {
     width: 95%;
+    margin-right: 50px;
   }
 
-  .todo-item {
-    flex-direction: column;
-    align-items: flex-start;
+  .box2 {
+    width: 95%;
   }
 
-  .todo-item p {
-    margin-bottom: 10px;
-  }
-
-  form input[type="text"],
-  form select {
-    width: 100%;
-    margin-bottom: 8px;
-  }
-
-  form button {
-    width: 100%;
-    padding: 8px 100px;
+  #inputField {
+    width: 45%;
   }
 }

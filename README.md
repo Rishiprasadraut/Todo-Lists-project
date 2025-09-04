@@ -35,7 +35,6 @@ This project is built with the following technologies:
 - **Backend**:
   - Node.js
   - Express.js
-  - Data Store in Array[]
 
 - **DataBase**:
   - MongoDB
